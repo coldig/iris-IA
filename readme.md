@@ -28,3 +28,23 @@ sendo:
     -- Iris Setosa
     -- Iris Versicolor
     -- Iris Virginica
+
+### 3.1.1 preparar o dataset
+Uma ia não entende texto(a classe) e tambem para melhor visualização dos dados eu optei por transformar os dados em uma tabela(via pandas)
+
+```
+import pandas as pd
+
+colunas = [
+    "sepal_length",
+    "sepal_width",
+    "petal_length",
+    "petal_width",
+    "class"
+]
+
+df = pd.read_csv("iris.data", names=colunas)
+
+df.to_csv("iris_tabela.csv", index=False)
+```
+
