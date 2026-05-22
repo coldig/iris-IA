@@ -2,7 +2,7 @@
 
 ## 1. baixar dependências
 
-```pip install -r requirements```
+```pip install -r requirements.txt```
 
 ## 2. inicializar o codigo
 
@@ -13,3 +13,18 @@
 ### 2.2. linux(ubunto)
 
 ```python3 main.py```
+
+## 3. explicação
+
+### 3.1 o dataset
+Foi utilizado o data set <a>https://archive.ics.uci.edu/dataset/53/iris</a> que contem os dados da seguinte forma:
+    <strong>5.1,3.5,1.4,0.2,Iris-setosa</strong>
+sendo:
+1. Comprimento da sépala em cm
+2. Largura da sépala em cm
+3. Comprimento da pétala em cm
+4. Largura da pétala em cm
+5. Classe:
+    -- Iris Setosa
+    -- Iris Versicolor
+    -- Iris Virginica
