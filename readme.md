@@ -48,3 +48,9 @@ df = pd.read_csv("iris.data", names=colunas)
 df.to_csv("iris_tabela.csv", index=False)
 ```
 
+e depois é só carregar com:
+
+```df = pd.read_csv("iris_tabela.csv")```
+
+### 3.2. Normalização
+Após carregar os dados, agora vem a etapa de normalizar os dados

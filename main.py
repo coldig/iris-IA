@@ -1,3 +1,5 @@
+import tensorflow as tf
+import pandas as pd
+from sklearn.model_selection import train_test_split
 
-if __name__ == "__main__":
-    ...
+dataset = pd.read_csv("iris_tabela")
