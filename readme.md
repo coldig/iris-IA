@@ -53,4 +53,35 @@ e depois é só carregar com:
 ```df = pd.read_csv("iris_tabela.csv")```
 
 ### 3.2. Normalização
-Após carregar os dados, agora vem a etapa de normalizar os dados
+Após carregar os dados, agora vem a etapa de normalizar os dados.
+A normalização de dados afeta diretamente como o modelo aprende e sem ela o treino fica instável.
+
+então inicialmente retiramos a classe e separamos ela em uma variavel Y e o restante dos dados(que serão usados para o treino) em uma variavel X:
+
+```
+X = dataset.drop("class", axis=1)
+y = dataset["class"]
+```
+
+A normalização que optei foi a Standardization. Primeiramente instanciamos a classe e chamamos a o metodo ```fit_transform```:
+
+```
+scaler = StandardScaler()
+X = scaler.fit_transform(X)
+```
+
+_o fit_transform justa as funções fit + transform_
+#### fit:
+Ele aprende os dados e calcula:
+    <li>média de cada coluna
+    <li>desvio padrão de cada coluna
+
+#### transform:
+Depois de aprender os valores, ele transforma os dados:
+```novo_valor = (valor - media) / desvio```
+<br>
+Então ele é um atalho para:
+```
+scaler.fit(X)
+X = scaler.transform(X)
+```
