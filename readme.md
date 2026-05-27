@@ -201,6 +201,7 @@ model.compile(
 ```optimizer```: é o algoritmo responsavel por ajustar os pesos(fazer o modelo aprender). Sem isso o modelo não aprende.
 ```adam```: é um dos otimizadores mais usados. Ele basicamente faz a pergunta "qual direção reduz o erro mais rápido?" e ajusta os pesos de forma inteligente.
 
+_O aprendizado da rede neural aprende via backpropagation + optimizer_
 
 •```loss='sparse_categorical_crossentropy'```
 
@@ -241,4 +242,13 @@ virginica   -> [0,0,1]
 - versicolor
 - virginica
 
-```crossentropy``` essa loss compara a previsão, vê se a resposta esta correta e gera um numero de erro. é uma formula matematica.
+```crossentropy``` essa loss compara a previsão, vê se a resposta esta correta e gera um numero de erro. é uma formula matematica(Cross Entropy).
+
+•```metrics=['accuracy']```
+Define as metricas utilizadas para acompanhar o desempenho do modelo.
+exemplo de metricas:
+- Accuracy
+- Precision
+- Recall
+
+e muitas outras.
