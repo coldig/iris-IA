@@ -181,3 +181,64 @@ Ele é o responsavel por transformar valores $$z=w1​x1​+w2​x2​+...+w16�
 _formula:_
 
 <img src="https://imgs.search.brave.com/Xssg5I0jTZuFQvSELd9tEiLZTRMxT2d-rnoi6KvmhLM/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YTIuZGV2LnRvL2R5/bmFtaWMvaW1hZ2Uv/d2lkdGg9ODAwLGhl/aWdodD0sZml0PXNj/YWxlLWRvd24sZ3Jh/dml0eT1hdXRvLGZv/cm1hdD1hdXRvL2h0/dHBzOi8vZGV2LXRv/LXVwbG9hZHMuczMu/YW1hem9uYXdzLmNv/bS91cGxvYWRzL2Fy/dGljbGVzL2VxNWJy/cWl5MHdueWVlbnRy/OXFpLnBuZw" width="400" alt="all_text">
+
+### 3.5. Compilação
+```
+model.compile(
+    optimizer='adam',
+    loss='sparse_categorical_crossentropy',
+    metrics=['accuracy']
+)
+```
+
+É nessa parte que você vai dizer pro modelo:
+- "como aprender"
+- "como medir erro"
+- "como avaliar desempenho"
+
+•```optimizer='adam'```
+
+```optimizer```: é o algoritmo responsavel por ajustar os pesos(fazer o modelo aprender). Sem isso o modelo não aprende.
+```adam```: é um dos otimizadores mais usados. Ele basicamente faz a pergunta "qual direção reduz o erro mais rápido?" e ajusta os pesos de forma inteligente.
+
+
+•```loss='sparse_categorical_crossentropy'```
+
+```loss```: é a função de erro, ela basicamente mede "o quão errada a IA está". 
+
+```sparse```: define como as labels estão representadas. 
+
+existem duas formas de represetar classes:
+
+##### inteiros normais:
+```
+0
+1
+2
+```
+Ex:
+```
+setosa -> 0
+versicolor -> 1
+virginica -> 2
+```
+
+##### One-hot encoding:
+```
+[1,0,0]
+[0,1,0]
+[0,0,1]
+```
+Ex:
+```
+setosa      -> [1,0,0]
+versicolor  -> [0,1,0]
+virginica   -> [0,0,1]
+````
+
+```categorical```: indica que essa loss é para problemas de multiplas categorias(ou classes). Aqui temos 3 classes:
+- setosa
+- versicolor
+- virginica
+
+```crossentropy``` essa loss compara a previsão, vê se a resposta esta correta e gera um numero de erro. é uma formula matematica.
