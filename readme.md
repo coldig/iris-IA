@@ -53,11 +53,21 @@ e depois é só carregar com:
 ```df = pd.read_csv("iris_tabela.csv")```
 
 ### 3.2. Separar dados de treino e de teste
-Então inicialmente retiramos a classe e separamos ela em uma variavel Y e o restante dos dados(que serão usados para o treino) em uma variavel X:
+Então inicialmente retiramos as classes(```dataset["class"]```) e separamos elas em uma variavel Y e o restante dos dados(que serão usados para o treino) em uma variavel X:
 
 ```
+encoder = LabelEncoder()
+
 X = dataset.drop("class", axis=1)
-y = dataset["class"]
+y = encoder.fit_transform(dataset["class"])
+```
+
+_o ```LabelEncoder``` é para transformar os nomes(str) em valores(int)_
+Ex:
+```
+Iris-setosa -> 0
+Iris-versicolor -> 1
+Iris-virginica -> 2
 ```
 
 Eu optei por separar 25% dos dados para teste e 75% para treino, e separando com a função ```train_test_split``` a distribuição fica aleatória(e não alguma estatística):
@@ -235,7 +245,7 @@ Ex:
 setosa      -> [1,0,0]
 versicolor  -> [0,1,0]
 virginica   -> [0,0,1]
-````
+```
 
 ```categorical```: indica que essa loss é para problemas de multiplas categorias(ou classes). Aqui temos 3 classes:
 - setosa
@@ -252,3 +262,9 @@ exemplo de metricas:
 - Recall
 
 e muitas outras.
+
+### 3.6. Treinamento
+
+```
+model.fit(X_train, y_train, epochs=50, batch_size=8, validation_split=0.2)
+```
