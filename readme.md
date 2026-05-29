@@ -268,3 +268,21 @@ e muitas outras.
 ```
 model.fit(X_train, y_train, epochs=50, batch_size=8, validation_split=0.2)
 ```
+
+```fit```: É responsavel por inicar o treinamento do modelo. 
+ele faz um ciclo repetitivo:
+1. recebe dados
+2. faz previsões
+3. calcula o erro (loss)
+4. usa backpropagation
+5. atualiza os pesos (de cada neurônio)
+6. repete isso várias vezes
+
+```X_train```: o primeiro parâmetro da função são as entradas.
+```y_train```: ja o segundo são as saídas.
+
+internamente a rede pega o ```X_train```, faz previsões e compara com o ```y_train``` usando a loss.
+
+```epochs```: são quantas vezes a rede repetira o ciclo de treinamento.
+
+_colocar ```epochs``` muito altas podem causar o problema de <a href="https://www.ibm.com/br-pt/think/topics/overfitting">overfitting</a>, que é quando a rede memoria os dados envez de aprender os padrões._
