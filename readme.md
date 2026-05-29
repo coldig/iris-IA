@@ -286,3 +286,9 @@ internamente a rede pega o ```X_train```, faz previsões e compara com o ```y_tr
 ```epochs```: são quantas vezes a rede repetira o ciclo de treinamento.
 
 _colocar ```epochs``` muito altas podem causar o problema de <a href="https://www.ibm.com/br-pt/think/topics/overfitting">overfitting</a>, que é quando a rede memoria os dados envez de aprender os padrões._
+
+```batch_size```: a rede não processa os dados todos de uma vez, ela divide os dados em pequenos grupos(os batches). a rede atualiza os pesos a cada batch, não a cada epoch.
+
+```validation_split```: aqui você define quantos % vão ser os dados de validação. os dados de validação são para verificar se a rede realmente aprendeu ou apenas decorou.
+
+####
