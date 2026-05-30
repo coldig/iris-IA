@@ -35,6 +35,6 @@ model.compile(
     metrics=['accuracy']
 )
 
-model.fit(X_train, y_train, epochs=50, batch_size=8, validation_split=0.2)
+history = model.fit(X_train, y_train, epochs=50, batch_size=8, validation_split=0.2)
 
-print(X_train)
+print(history.history)

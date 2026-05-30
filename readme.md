@@ -291,4 +291,81 @@ _colocar ```epochs``` muito altas podem causar o problema de <a href="https://ww
 
 ```validation_split```: aqui você define quantos % vão ser os dados de validação. os dados de validação são para verificar se a rede realmente aprendeu ou apenas decorou.
 
-####
+#### métricas durante o fit
+```
+loss: 0.25
+accuracy: 0.91
+val_loss: 0.30
+val_accuracy: 0.88
+```
+
+```loss```: Erro no treino.
+
+```accuracy```: Acertos no treino.
+
+```val_loss```: Erro na validação.
+
+```val_accuracy```: Acertos na validação.
+
+<br>
+
+_O fit retorna um objeto ```History``` que você consegue acessar com:_
+```
+history = model.fit(...)
+
+print(history.history)
+```
+_que voce cosegue usar para exibir graficos sobre o aprendizado da rede._
+
+#### conceitos extras
+##### como identificar overfitting(sinais comuns):
+overfitting é quando a rede fica especifica demais, ela só "decora" os dados.
+accuracy sobe ↑
+val_accuracy para de subir ↓
+
+val_loss ↘↘↗↗
+loss ↓↓↓↓↓↓
+
+##### como identificar underfitting(sinais comuns):
+Underfitting acontece quando o modelo não consegue aprender adequadamente os padrões dos dados.
+
+Possíveis causas:
+
+- poucas epochs
+- rede pequena
+- learning rate inadequado
+- features ruins
+- dados ruins
+- regularização excessiva
+
+Indicativos:
+
+accuracy baixa ↓
+val_accuracy baixa ↓
+
+loss alta ↑
+val_loss alta ↑
+
+##### Sharp minima vs Flat minima
+
+sharp minima:
+Acontece quando a rede encontra uma solução muito específica. Imagine um vale muito estreito. Qualquer pequeno desvio faz você subir rapidamente a montanha novamente.
+
+flat minima:
+é o contrario, acontece quando a rede encontra uma solução robusta. Imagine um vale largo e plano. Você pode se mover um pouco para os lados e continuar em uma região de baixa loss.
+
+ai que entra os batches grandes, eles fazem o treino ficar assim:
+
+```
+batch_size=8
+↘ ↙ ↘ ↗ ↘ ↙
+```
+
+```
+batch_size=1024
+↘↘↘↘↘↘
+```
+
+"Overfitting não significa automaticamente que a rede encontrou um sharp minima, mas existe uma forte relação entre os dois.
+
+Da mesma forma, encontrar um flat minima não garante ausência de overfitting, mas geralmente está associado a uma melhor capacidade de generalização."
