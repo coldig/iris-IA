@@ -3,6 +3,7 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.preprocessing import LabelEncoder
+import numpy as np
 
 # tópico 3.1
 dataset = pd.read_csv("iris_tabela.csv")
@@ -37,4 +38,14 @@ model.compile(
 
 history = model.fit(X_train, y_train, epochs=50, batch_size=8, validation_split=0.2)
 
-print(history.history)
+# tópico 4
+result = model.predict(X_test[:1])
+np.set_printoptions(suppress=True)
+
+print("dados de entrada(ja normalizados):", X_test[:1])
+print("classe da flor:", y_test[:1])
+print("resposta gerada pelo modelo:", result)
+
+loss, acc = model.evaluate(X_test, y_test)
+print("Loss:", loss)
+print("Acurácia:", acc)

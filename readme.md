@@ -14,7 +14,7 @@
 
 ```python3 main.py```
 
-## 3. Explicação
+## 3. Construção
 
 ### 3.1. O dataset
 Foi utilizado o data set <a>https://archive.ics.uci.edu/dataset/53/iris</a> que contem os dados da seguinte forma:
@@ -369,3 +369,22 @@ batch_size=1024
 "Overfitting não significa automaticamente que a rede encontrou um sharp minima, mas existe uma forte relação entre os dois.
 
 Da mesma forma, encontrar um flat minima não garante ausência de overfitting, mas geralmente está associado a uma melhor capacidade de generalização."
+
+## 4. Medir a qualidade do modelo
+### 4.1. Predição
+Predição é o ato de usar o modelo para gerar uma resposta.
+```
+result = model.predict(X_test[:1])
+np.set_printoptions(suppress=True)
+
+print("dados de entrada(ja normalizados):", X_test[:1])
+print("classe da flor:", y_test[:1])
+print("resposta gerada pelo modelo:", result)
+```
+_como o resultado é em notação cientifica(```[9.9638355e-01]```) eu optei por desativar essa opção do numpy com o ```np.set_printoptions(suppress=True)```_
+
+
+_o ```[:1]``` é porque quando você usa o ```.predict``` você recebe um batch de dados, e para testes peguei somente a ultima saída_
+
+### 4.2. Avaliação
+É medir o quão boa foi a predição.
