@@ -371,6 +371,7 @@ batch_size=1024
 Da mesma forma, encontrar um flat minima não garante ausência de overfitting, mas geralmente está associado a uma melhor capacidade de generalização."
 
 ## 4. Medir a qualidade do modelo
+_lembrando que os dados de teste o modelo nunca viu, por isso é agora que vamos usar eles_
 ### 4.1. Predição
 Predição é o ato de usar o modelo para gerar uma resposta.
 ```
@@ -387,4 +388,32 @@ _como o resultado é em notação cientifica(```[9.9638355e-01]```) eu optei por
 _o ```[:1]``` é porque quando você usa o ```.predict``` você recebe um batch de dados, e para testes peguei somente a ultima saída_
 
 ### 4.2. Avaliação
+```
+loss, acc = model.evaluate(X_test, y_test)
+print("Loss:", loss)
+print("Acurácia:", acc)
+```
 É medir o quão boa foi a predição.
+
+_o ```model.evaluate(X_test, y_test)``` faz ```model.predict(...)``` internamente e retorna o resultado das predições_
+
+```loss```: Mede o quão errada foi a predição.
+```accuracy```: Conta acertos.
+
+### 4.3. Exportar modelo
+Com o modelo ja treinado, podemos salvar ele em um arquivo usando:
+
+```
+model.save("modelo.keras")
+```
+
+ou 
+
+```
+model.save("modelo.h5")
+```
+
+e carregar ele em outro arquivo usando:
+```
+model = tf.keras.models.load_model("modelo.keras")
+```
